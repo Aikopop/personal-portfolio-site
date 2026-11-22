@@ -1,0 +1,25 @@
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body { min-height: 100vh; background: #f0adc6; color: #281b21; font-family: Arial, sans-serif; overflow: hidden; }
+.top-bar { position: fixed; inset: 0 0 auto; z-index: 5; height: 72px; display: flex; align-items: center; gap: 16px; padding: 0 24px; background: #fff; box-shadow: 0 2px 12px #54253a18; }
+.home-link { color: #333; font-size: 26px; text-decoration: none; }
+.heart-button, .open-prompt { border: 0; border-radius: 50%; width: 44px; height: 44px; color: #f05b91; background: #fff0f6; font-size: 28px; cursor: pointer; transition: transform .18s ease, background .18s ease; }
+.heart-button:hover, .open-prompt:hover { transform: scale(1.08); background: #ffe0ec; }
+.home-screen { min-height: 100vh; display: grid; align-content: center; justify-items: center; padding: 90px 20px 20px; text-align: center; }
+.home-screen h1 { margin: 0 0 12px; color: white; font-size: clamp(42px, 8vw, 72px); }
+.home-screen p { margin: 0 0 24px; color: white; }
+.modal-backdrop { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 20px; background: #24121bb8; }
+.modal-backdrop[hidden], .control-room[hidden] { display: none; }
+.password-dialog { position: relative; display: grid; gap: 16px; width: min(100%, 420px); padding: 34px 28px 28px; border-radius: 18px; background: white; box-shadow: 0 18px 60px #32132240; }
+.password-dialog label { padding-right: 20px; font-size: 18px; font-weight: 700; line-height: 1.45; }
+.password-dialog input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #d5c6cd; border-radius: 8px; font-size: 16px; }
+.password-dialog input:focus { outline: 2px solid #f05b91; border-color: transparent; }
+.dialog-close { position: absolute; top: 10px; right: 12px; border: 0; background: none; color: #70485a; font-size: 26px; cursor: pointer; }
+.submit-button { min-height: 44px; border: 0; border-radius: 8px; background: #f05b91; color: white; font-size: 16px; font-weight: 700; cursor: pointer; }
+.control-room { min-height: 100vh; position: relative; padding: 72px 24px 24px; }
+.welcome-card { position: fixed; right: 24px; bottom: 24px; display: flex; align-items: center; gap: 16px; max-width: min(690px, calc(100vw - 48px)); padding: 14px; border-radius: 18px; background: #fff; box-shadow: 0 10px 35px #54253a2b; animation: rise-in .7s cubic-bezier(.2,.8,.2,1) both; }
+.welcome-card p { margin: 0; max-width: 330px; font-size: clamp(15px, 2vw, 19px); line-height: 1.5; }
+.welcome-card img { display: block; width: clamp(140px, 28vw, 260px); max-height: 190px; object-fit: cover; border-radius: 12px; }
+@keyframes rise-in { from { transform: translateY(120%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@media (max-width: 520px) { .top-bar { height: 60px; padding: 0 16px; } .control-room { padding: 60px 12px 12px; } .welcome-card { right: 12px; bottom: 12px; gap: 10px; max-width: calc(100vw - 24px); padding: 10px; } .welcome-card p { font-size: 14px; } .welcome-card img { width: 38vw; max-height: 145px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
