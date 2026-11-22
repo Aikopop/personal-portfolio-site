@@ -19,13 +19,17 @@ body { min-height: 100vh; background: #f0adc6; color: #281b21; font-family: Aria
 .submit-button { min-height: 44px; border: 0; border-radius: 8px; background: #f05b91; color: white; font-size: 16px; font-weight: 700; cursor: pointer; }
 body.room-open { background: #fff; }
 .control-room { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 96px 24px 24px; background: #fff; }
-.welcome-card { display: flex; flex-direction: column; align-items: center; gap: 20px; width: min(100%, 690px); padding: 24px; text-align: center; }
+.welcome-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: 20px; width: min(100%, 690px); padding: 24px; text-align: center; }
 .welcome-card p { margin: 0; max-width: 520px; font-size: clamp(18px, 3vw, 24px); line-height: 1.5; }
 .welcome-card img { display: block; width: clamp(180px, 32vw, 300px); max-height: 240px; object-fit: cover; border-radius: 12px; }
+.action-panel { position: fixed; left: 24px; bottom: 24px; z-index: 6; display: flex; align-items: center; gap: 12px; min-width: 260px; min-height: 110px; padding: 18px; border: 1px solid #eadce2; border-radius: 12px; background: #fff; box-shadow: 0 8px 28px #32132222; }
+.action-panel button { width: 44px; height: 44px; border: 0; border-radius: 8px; background: #d92f48; cursor: pointer; }
+.action-panel button:hover { background: #b91f35; }
 @media (max-width: 520px) {
   .top-bar { height: 60px; padding: 0 16px; }
   .control-room { padding: 76px 12px 12px; }
   .welcome-card { gap: 16px; padding: 16px; }
+  .action-panel { left: 12px; bottom: 12px; min-width: 200px; min-height: 90px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
