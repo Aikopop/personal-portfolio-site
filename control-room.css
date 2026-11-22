@@ -18,18 +18,28 @@ body { min-height: 100vh; background: #f0adc6; color: #281b21; font-family: Aria
 .dialog-close { position: absolute; top: 10px; right: 12px; border: 0; background: none; color: #70485a; font-size: 26px; cursor: pointer; }
 .submit-button { min-height: 44px; border: 0; border-radius: 8px; background: #f05b91; color: white; font-size: 16px; font-weight: 700; cursor: pointer; }
 body.room-open { background: #fff; }
-.control-room { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 96px 24px 24px; background: #fff; }
-.welcome-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: 20px; width: min(100%, 690px); padding: 24px; text-align: center; }
-.welcome-card p { margin: 0; max-width: 520px; font-size: clamp(18px, 3vw, 24px); line-height: 1.5; }
-.welcome-card img { display: block; width: clamp(180px, 32vw, 300px); max-height: 240px; object-fit: cover; border-radius: 12px; }
-.action-panel { position: fixed; left: 24px; bottom: 24px; z-index: 6; display: flex; align-items: center; gap: 12px; min-width: 260px; min-height: 110px; padding: 18px; border: 1px solid #eadce2; border-radius: 12px; background: #fff; box-shadow: 0 8px 28px #32132222; }
-.action-panel button { width: 44px; height: 44px; border: 0; border-radius: 8px; background: #d92f48; cursor: pointer; }
-.action-panel button:hover { background: #b91f35; }
-@media (max-width: 520px) {
+.control-room { position: relative; min-height: 100vh; display: flex; align-items: stretch; justify-content: stretch; padding: 0; overflow: hidden; background: #fff; }
+.welcome-card { position: fixed; right: 24px; bottom: 24px; z-index: 4; display: flex; flex-direction: row; align-items: center; gap: 20px; width: min(690px, 58vw); min-height: 240px; padding: 24px; border: 1px solid #eadce2; border-radius: 18px; background: #fff; box-shadow: 0 8px 32px #32132224; text-align: left; animation: slide-up .7s cubic-bezier(.2,.8,.2,1) both; }
+.welcome-card p { flex: 1; margin: 0; max-width: 520px; font-size: clamp(16px, 2vw, 22px); line-height: 1.5; }
+.welcome-card img { display: block; flex: 0 0 auto; width: clamp(180px, 24vw, 260px); max-height: 220px; object-fit: cover; border-radius: 12px; }
+.action-panel { position: fixed; left: 24px; top: 50%; z-index: 6; display: flex; flex-direction: column; justify-content: center; gap: 16px; width: min(340px, 30vw); min-height: 44vh; padding: 30px; border: 1px solid #eadce2; border-radius: 18px; background: #fff; box-shadow: 0 8px 32px #32132224; transform: translateY(-50%); animation: slide-up .7s .08s cubic-bezier(.2,.8,.2,1) both; }
+.action-panel button { width: 100%; min-height: 54px; border: 0; border-radius: 8px; background: #f05b91; cursor: pointer; transition: background .18s ease, transform .18s ease; }
+.action-panel button:hover { background: #df477f; transform: translateY(-1px); }
+@keyframes slide-up { from { opacity: 0; translate: 0 48px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 900px) {
+  .action-panel { width: 30vw; min-height: 38vh; padding: 22px; }
+  .welcome-card { right: 16px; bottom: 16px; width: 62vw; min-height: 210px; padding: 18px; gap: 14px; }
+  .welcome-card img { width: clamp(150px, 22vw, 210px); }
+}
+@media (max-width: 600px) {
+  body { overflow: auto; }
   .top-bar { height: 60px; padding: 0 16px; }
-  .control-room { padding: 76px 12px 12px; }
-  .welcome-card { gap: 16px; padding: 16px; }
-  .action-panel { left: 12px; bottom: 12px; min-width: 200px; min-height: 90px; }
+  .control-room { min-height: 100vh; display: flex; flex-direction: column; gap: 14px; padding: 72px 12px 12px; overflow: auto; }
+  .welcome-card { position: relative; inset: auto; order: 1; width: 100%; min-height: 0; padding: 16px; gap: 12px; }
+  .welcome-card p { font-size: clamp(14px, 4vw, 18px); }
+  .welcome-card img { width: 38%; max-height: 170px; }
+  .action-panel { position: relative; inset: auto; order: 2; width: 100%; min-height: 0; flex-direction: row; gap: 12px; padding: 16px; transform: none; }
+  .action-panel button { min-height: 48px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
