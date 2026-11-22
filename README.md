@@ -18,3 +18,5 @@ Luego visita `http://localhost:8000`.
 2. Aparecerá un código aleatorio de seis dígitos en la esquina superior derecha.
 3. Copia el código dentro de los 10 segundos y escríbelo en el formulario.
 4. Al verificarlo correctamente, accederás al perfil.
+
+<img width="498" height="281" alt="marin-kitagawa" src="https://github.com/user-attachments/assets/ce5e8abf-dc04-46b6-b97a-35a9d2cac2dc" />
