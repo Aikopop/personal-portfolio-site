@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sala de control</title>
+  <link rel="stylesheet" href="control-room.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a class="home-link" href="index.html" aria-label="Volver al inicio">←</a>
+    <button class="heart-button" id="heartButton" type="button" aria-label="Abrir sala de control">♥</button>
+  </header>
+
+  <main class="home-screen" id="homeScreen">
+    <h1>Welcome</h1>
+    <p>What do you want to see?</p>
+    <button class="open-prompt" id="openPrompt" type="button">♥</button>
+  </main>
+
+  <div class="modal-backdrop" id="passwordBackdrop" hidden>
+    <form class="password-dialog" id="passwordForm" aria-labelledby="passwordQuestion">
+      <button class="dialog-close" id="closePrompt" type="button" aria-label="Cerrar">×</button>
+      <label id="passwordQuestion" for="passwordInput">cual es la contraseña nuestra teniente coronel</label>
+      <input id="passwordInput" type="password" autocomplete="off" required>
+      <button class="submit-button" type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <main class="control-room" id="controlRoom" hidden aria-label="Sala de control">
+    <div class="welcome-card" id="welcomeCard">
+      <p>bienvenida a la sala de control mi teniente coronel, se ve bonita hoy tambien</p>
+      <img src="https://github.com/user-attachments/assets/ce5e8abf-dc04-46b6-b97a-35a9d2cac2dc" alt="Gif de bienvenida">
+    </div>
+  </main>
+  <script src="control-room.js"></script>
+</body>
+</html>
