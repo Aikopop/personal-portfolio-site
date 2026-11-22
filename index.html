@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="top-bar">
-        <button class="back-button" id="backButton">←</button>
+        <button class="back-button" id="backButton" aria-label="Back">←</button>
         <div class="language-section" id="languageSection"><span class="language-label">Language</span></div>
     </div>
 
@@ -36,14 +36,11 @@
         <div class="right-content"><h1 class="detail-title" id="detailTitle">Business</h1></div>
     </div>
 
-    <button class="donate-button" id="donateButton">❤️</button>
+    <button class="donate-button" id="donateButton" aria-label="Donate">❤️</button>
     <div class="donate-label" id="donateLabel">Donate!</div>
 
     <div class="notifications-drawer" id="notificationsDrawer">
-        <div class="drawer-header">
-            <span class="drawer-title" id="drawerTitle">Notifications</span>
-            <button class="drawer-close" id="drawerCloseBtn">✕</button>
-        </div>
+        <div class="drawer-header"><span class="drawer-title" id="drawerTitle">Notifications</span><button class="drawer-close" id="drawerCloseBtn" aria-label="Close">✕</button></div>
         <div class="drawer-content" id="drawerContent"></div>
     </div>
 
@@ -63,38 +60,74 @@
     <div class="panel" id="verificationPanel">
         <div class="panel-content">
             <p class="panel-title" id="verificationTitle">Enter verification code</p>
-            <p id="verificationSubtitle" style="font-size: 12px; color: #666; margin-bottom: 20px;"></p>
+            <p id="verificationSubtitle" class="verification-subtitle"></p>
             <div class="code-input-group" id="codeInputGroup">
-                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
-                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
-                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
-                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
-                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
-                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric" aria-label="Code digit 1">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric" aria-label="Code digit 2">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric" aria-label="Code digit 3">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric" aria-label="Code digit 4">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric" aria-label="Code digit 5">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric" aria-label="Code digit 6">
             </div>
             <div class="error-message" id="verificationError"></div>
         </div>
     </div>
 
     <div class="panel" id="successPanel">
-        <div class="panel-content success-panel">
-            <p id="successMessage"></p>
-            <button class="success-button" id="successConfirmBtn">Confirm</button>
-        </div>
+        <div class="panel-content success-panel"><p id="successMessage"></p><button class="success-button" id="successConfirmBtn">Confirm</button></div>
     </div>
 
     <div class="panel" id="profileEditPanel">
         <div class="panel-content">
             <p class="panel-title" id="profileEditTitle">Personalize profile</p>
-            <div class="form-group">
-                <label id="photoLabel">Profile photo</label>
-                <input type="file" id="profilePhotoInput" accept="image/*">
+            <div class="crop-editor">
+                <div class="crop-preview" id="cropPreview"><span id="cropPlaceholder">pfp</span><img id="cropImage" alt="Profile photo preview" hidden></div>
+                <div class="crop-controls">
+                    <label class="choose-photo-button" for="profilePhotoInput" id="choosePhotoLabel">Choose photo</label>
+                    <input type="file" id="profilePhotoInput" accept="image/*" hidden>
+                    <label class="zoom-label" for="photoZoom" id="zoomLabel">Zoom</label>
+                    <input type="range" id="photoZoom" min="1" max="3" step="0.01" value="1" disabled>
+                    <p class="crop-hint" id="cropHint">Drag the photo to adjust its position.</p>
+                </div>
             </div>
-            <div class="form-group">
-                <label id="usernameLabel">Username</label>
-                <input type="text" id="profileUsernameInput" placeholder="New username">
+            <div class="form-group"><label id="usernameLabel" for="profileUsernameInput">Username</label><input type="text" id="profileUsernameInput" placeholder="New username"></div>
+            <button class="confirm-button active" id="profileConfirmBtn">Confirm</button>
+        </div>
+    </div>
+
+    <div class="panel account-panel" id="accountPanel" aria-labelledby="accountPanelTitle">
+        <div class="panel-content">
+            <div class="panel-heading"><p class="panel-title" id="accountPanelTitle">Sobre mi cuenta</p><button class="panel-close" id="accountCloseBtn" aria-label="Cerrar">×</button></div>
+            <div class="account-actions">
+                <button class="account-action" id="accountInfoBtn">Información de mi cuenta</button>
+                <button class="account-action" id="logoutBtn">Cerrar sesión</button>
+                <button class="account-action danger-button" id="deleteAccountBtn">Borrar cuenta</button>
             </div>
-            <button class="confirm-button active" id="profileConfirmBtn" style="margin-top: 20px;">Confirm</button>
+        </div>
+    </div>
+
+    <div class="panel account-panel" id="accountInfoPanel" aria-labelledby="accountInfoTitle">
+        <div class="panel-content">
+            <div class="panel-heading"><p class="panel-title" id="accountInfoTitle">Información de mi cuenta</p></div>
+            <div class="account-info">
+                <p><strong id="createdAtLabel">Fecha de creación de cuenta:</strong> <span id="accountCreatedAt"></span></p>
+                <p><strong id="visitsLabel">Veces que has entrado a la página:</strong> <span id="accountVisits"></span></p>
+            </div>
+            <div class="account-panel-footer"><button class="back-to-account-button" id="backToAccountBtn">←</button><span id="backToAccountLabel">Regresar</span></div>
+        </div>
+    </div>
+
+    <div class="panel confirm-delete-panel" id="deleteConfirmPanel" aria-labelledby="deleteConfirmTitle">
+        <div class="panel-content">
+            <p class="panel-title" id="deleteConfirmTitle">¿Estás seguro de querer borrar la cuenta?</p>
+            <div class="delete-confirm-actions"><button class="account-action danger-button" id="confirmDeleteBtn">Sí</button><button class="account-action" id="cancelDeleteBtn">No</button></div>
+        </div>
+    </div>
+
+    <div class="panel account-panel delete-request-panel" id="deleteRequestPanel" aria-labelledby="deleteRequestMessage">
+        <div class="panel-content">
+            <div class="panel-heading"><span></span><button class="panel-close" id="deleteRequestCloseBtn" aria-label="Cerrar">×</button></div>
+            <p id="deleteRequestMessage" class="delete-request-message">Hemos recibido tu solicitud, se te enviará una notificación cuando cortemos todo vínculo con esta página y entonces podrás eliminar tu cuenta definitivamente.</p>
         </div>
     </div>
 
