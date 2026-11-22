@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar">
+        <button class="back-button" id="backButton">←</button>
+        <div class="language-section" id="languageSection"><span class="language-label">Language</span></div>
+    </div>
+
+    <div class="main-container" id="mainContainer">
+        <h1 class="main-title">Welcome</h1>
+        <p class="subtitle">What do you want to see?</p>
+        <div class="button-container">
+            <button class="nav-button" data-section="business">Business</button>
+            <button class="nav-button" data-section="user">User</button>
+        </div>
+        <div class="submenu" id="business-submenu">
+            <button class="sub-button" data-page="about-me-business">About Me</button>
+            <button class="sub-button" data-page="portfolio">Portfolio</button>
+        </div>
+        <div class="submenu" id="user-submenu">
+            <button class="sub-button" data-page="about-me-user">About Me</button>
+            <button class="sub-button" data-page="socials">Socials</button>
+            <button class="sub-button" data-page="merch">Merch</button>
+            <button class="sub-button" data-page="projects">Projects</button>
+        </div>
+    </div>
+
+    <div class="detail-container" id="detailContainer">
+        <div class="left-sidebar"><div class="white-box" id="whiteBox"></div></div>
+        <div class="right-content"><h1 class="detail-title" id="detailTitle">Business</h1></div>
+    </div>
+
+    <button class="donate-button" id="donateButton">❤️</button>
+    <div class="donate-label" id="donateLabel">Donate!</div>
+
+    <div class="notifications-drawer" id="notificationsDrawer">
+        <div class="drawer-header">
+            <span class="drawer-title" id="drawerTitle">Notifications</span>
+            <button class="drawer-close" id="drawerCloseBtn">✕</button>
+        </div>
+        <div class="drawer-content" id="drawerContent"></div>
+    </div>
+
+    <div class="panel" id="languagePanel">
+        <div class="panel-content">
+            <p class="panel-title">Select your language</p>
+            <div class="language-options">
+                <button class="language-option" data-lang="ja">日本語</button>
+                <button class="language-option" data-lang="de">Deutsch</button>
+                <button class="language-option" data-lang="en">English</button>
+                <button class="language-option" data-lang="es">Español</button>
+            </div>
+            <button class="confirm-button" id="confirmButton">Confirm</button>
+        </div>
+    </div>
+
+    <div class="panel" id="verificationPanel">
+        <div class="panel-content">
+            <p class="panel-title" id="verificationTitle">Enter verification code</p>
+            <p id="verificationSubtitle" style="font-size: 12px; color: #666; margin-bottom: 20px;"></p>
+            <div class="code-input-group" id="codeInputGroup">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+                <input type="text" class="code-digit" maxlength="1" inputmode="numeric">
+            </div>
+            <div class="error-message" id="verificationError"></div>
+        </div>
+    </div>
+
+    <div class="panel" id="successPanel">
+        <div class="panel-content success-panel">
+            <p id="successMessage"></p>
+            <button class="success-button" id="successConfirmBtn">Confirm</button>
+        </div>
+    </div>
+
+    <div class="panel" id="profileEditPanel">
+        <div class="panel-content">
+            <p class="panel-title" id="profileEditTitle">Personalize profile</p>
+            <div class="form-group">
+                <label id="photoLabel">Profile photo</label>
+                <input type="file" id="profilePhotoInput" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label id="usernameLabel">Username</label>
+                <input type="text" id="profileUsernameInput" placeholder="New username">
+            </div>
+            <button class="confirm-button active" id="profileConfirmBtn" style="margin-top: 20px;">Confirm</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <script src="script.js"></script>
+</body>
+</html>
